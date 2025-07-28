@@ -33,7 +33,10 @@
 
 % load english (for abstract) and ngerman language
 % the main language has to come last
-\usepackage[american, ngerman]{babel}
+% Use line below if thesis is written in german
+% \usepackage[american, ngerman]{babel}
+% Use line below if thesis is written in english
+\usepackage[ngerman, american]{babel}
 
 % intelligent quotation marks, language and nesting sensitive
 \usepackage[autostyle]{csquotes}
@@ -73,6 +76,9 @@
   separate-uncertainty=true,
   per-mode=symbol-or-fraction,
 ]{siunitx}
+
+\addto\extrasngerman{\sisetup{locale = DE}}
+\addto\extrasenglish{\sisetup{locale = US}}
 
 %------------------------------------------------------------------------------
 %-------------------------------- tables  -------------------------------------

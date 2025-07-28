@@ -44,3 +44,4 @@ pdfpages
 eso-pic
 atbegshi
 pdflscape
+translations

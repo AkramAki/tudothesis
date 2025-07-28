@@ -59,6 +59,28 @@
 \let\oldtitle\title%
 \renewcommand{\title}[1]{\oldtitle{#1}\newcommand{\thetitle}{#1}}
 
+% Provide all translations through the "translations" package
+\RequirePackage{translations}
+
+\DeclareTranslation{German}{thesisclass}{Arbeit zur Erlangung des akademischen Grades}
+\DeclareTranslation{English}{thesisclass}{Thesis for obtaining the academic degree}
+
+\DeclareTranslation{German}{birthplace}{geboren in}
+\DeclareTranslation{English}{birthplace}{born in}
+
+\DeclareTranslation{German}{firstcorrector}{Erstgutachter}
+\DeclareTranslation{English}{firstcorrector}{Primary reviewer}
+
+\DeclareTranslation{German}{secondcorrector}{Zweitgutachter}
+\DeclareTranslation{English}{secondcorrector}{secondary reviewer}
+
+\DeclareTranslation{German}{submissiondate}{Abgabedatum}
+\DeclareTranslation{English}{submissiondate}{Submission date}
+
+\DeclareTranslation{German}{university}{Technische Universität Dortmund}
+\DeclareTranslation{English}{university}{Technische Universität Dortmund} 
+
+
 % initialize commands:
 \newcommand\thebirthplace{}
 \newcommand\thechair{}
@@ -69,7 +91,7 @@
 \newcommand\thesecondcorrector{}
 
 % new commands for information about the thesis
-\newcommand\birthplace[1]{\renewcommand\thebirthplace{geboren in #1}}
+\newcommand\birthplace[1]{\renewcommand\thebirthplace{#1}}
 \newcommand\chair[1]{\renewcommand\thechair{#1}}
 \newcommand\division[1]{\renewcommand\thedivision{#1}}
 \newcommand\thesisclass[1]{\renewcommand\thethesisclass{#1}}
@@ -78,17 +100,17 @@
 \newcommand\secondcorrector[1]{\renewcommand\thesecondcorrector{#1}}
 
 % set title page elements
-\subject{Arbeit zur Erlangung des akademischen Grades\\ \thethesisclass}
-\publishers{\thechair \\ \thedivision \\ Technische Universität Dortmund}
+\subject{\GetTranslation{thesisclass} \\ \thethesisclass}
+\publishers{\thechair \\ \thedivision \\ \GetTranslation{university}}
 
 % page for the correctors
 \newcommand{\makecorrectorpage}{%
   \thispagestyle{empty}
   \vspace*{\fill}
   \begin{tabular}{@{}l@{\hspace{2em}}l@{}}
-      Erstgutachter:  & \thefirstcorrector \\
-      Zweitgutachter: & \thesecondcorrector \\
-      Abgabedatum:    & \thesubmissiondate
+      \GetTranslation{firstcorrector}:  & \thefirstcorrector \\
+      \GetTranslation{secondcorrector}: & \thesecondcorrector \\
+      \GetTranslation{submissiondate}:  & \thesubmissiondate
   \end{tabular}
   \newpage
 }
@@ -96,5 +118,5 @@
 % add birthplace to author
 \let\oldauthor\author
 \renewcommand\author[1]{%
-  \oldauthor{#1 \\ \thebirthplace}
+  \oldauthor{#1 \\ \GetTranslation{birthplace} \thebirthplace}
 }
